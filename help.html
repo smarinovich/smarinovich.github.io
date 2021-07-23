@@ -1,0 +1,173 @@
+<!-- 
+    Made by Sam Marinovich 2021
+    The 'online help' page for the Pseudocode Interpreter 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Help - PseudoCode Interpreter</title>
+    <link rel='icon' type="image/png" href="files/logo.png">
+    <!--Linking all the Bootstrap documents-->
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <script type="text/javascript" src="script/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <!--Linking my own css-->
+    <link rel='stylesheet' href="style/style.css">
+</head>
+
+<body>
+
+    <div class='container-fluid'>
+        <br>
+        <div class='jumbotron text-center'>
+            <h1>Help Page</h1>
+            <h3>PseudoCode Interpreter -
+                <a href='index.html'>Return to Interpreter</a>
+            </h3>
+        </div>
+        <!--All the contents of the help page-->
+        <div id='helpContent'>
+            <h4>Nature of Pseudocode and the Interpreter</h4>
+            <p>Pseudocode is a in between language used by programmers, to replicate how code should work, in a way that
+                any programer can understand (due to it not being attached to a direct language, and mimicking the
+                english language).The Pseudocode Interpreter runs pseudocode based off the HSC Software Design and
+                Development Course
+                Specifications (details can be found <a href='files/sdd-course-specs.pdf#page=35'
+                    target="_blank">here</a>).
+                <!--Link to SDD course specifications, opening on the page with pseudocode-->
+                <br>
+                The Interpreter can only take integer (whole number) or string (words or phrases surrounded by
+                "quotation marks") values. In order to have a space saved as a value, it needs to be replaced with an
+                underscore '_'. A variable can be defined as any combination of letters, numbers and symbols, as long as
+                it isn't only numbers. The Interpreter however can't run subprograms, and can only run a mainline
+                program.
+            </p>
+            <h4>Syntax and Structures</h4>
+            <p>
+                <Strong>A Note on the Functions</Strong><br>
+                You can not put the same function inside another one, Such as a WHILE loop inside a WHILE loop, or an IF
+                statement inside an IF statement. If the interpreter is not giving an output, this could be the cause.
+                <strong>BEGIN...END</strong><br>
+                A program must have its beginning and ending defined. In order to do that in the Interpreter, the first
+                line must read BEGIN, and the last line must read END. This is especially important when there are
+                subprograms, so we know when the mainline and subprogram start and finish.<br>
+                <strong>input, output</strong><br>
+                The input statement allows for a value to be inputted and stored by a variable. It must be followed by
+                the name of the variable that it is to be saved to. Output will send out a value. It can either be a
+                string, integer, or a variable. It must be followed after the word output. Output statements also
+                allow for manipulation of values. You can add strings ('hello' + 'world'), multiply strings by integers
+                ('hello' * 2), or manipulate integers by adding (3 + 2), subtracting (3 - 2), multiplying (3 * 2),
+                division (4 \ 2), or raise to a power (3 ^ 2). Note that division is represented by backslash '\'.<br>
+                <strong>Variable declaration</strong><br>
+                Variables can be declared without the input function. Similar to other coding languages a variable can
+                be defined with equals '='. The name can't be purely numbers, and ideally should be letters, or a mix of
+                both. The values that can be saved can either be integers or strings, which follow the same structure as
+                mentioned above (integers are whole numbers, positive or negative, strings are words or phrases,
+                surrounded by quotation marks (spaces must be replaced with underscores)).<br>
+                <strong>Operators</strong><br>
+                The operator can either be a equals (==) or not equal (!=) for strings, or equals (==), not equal (!=),
+                greater than (>), greater than and equal (>=), less than (&lt;) or less than and equal (&lt;=) for
+                integers.<br>
+                <strong>IF Statement</strong><br>
+                IF statements are used if a section of code is to be run if a condition is true. The first line must be
+                written as IF <em>value operator value</em> THEN, with the 2 values being a variable. If 2
+                comparisons are to be done in the same line, then AND or OR can be placed after the first comparison,
+                to have a second, which will look like IF <em>value operator value</em> AND <em>value operator
+                    value</em> THEN. The last line of the if statement (after the proceeding code that will run if the
+                comparison
+                is true), will be ENDIF. If you want to add code that will occur if the comparison returns false,
+                then after the section of code that will run for the true result, add the line ELSE, then with the
+                code for when the result is false. The program will only run 1 or the other, but not both.<br>
+                <strong>CASEWHERE</strong><br>
+                CASEWHERE, or multi-way selection, allows for multiple comparisons to happen sequentially. The first
+                line must state CASEWHERE <em>value operator</em> with each proceeding line starting with
+                <em>value</em>: The
+                values can either be string, integer, or in a variable. The operators which are used are all the same
+                as in IF statements, and the same as in other comparisons. There can also be an OTHERWISE: case, which
+                will activate if no other cases have run. The OTHERWISE: case
+                must be the last case, before the ENDCASE. After the case, the user can run one function, like an
+                output. This is done to correspond with the HSC guidelines. After this one function has run, the code
+                will then skip all other cases. The final line of CASEWHERE is ENDCASE, which will define when the
+                statements have stopped.<br>
+                <strong>WHILE loop</strong><br>
+                A WHILE loop will repeat until a condition is met. A while loop is written as WHILE <em>value operator
+                    value</em>, using the same values and operators as in other comparisons (like in IF and CASEWHERE).
+                The while loop will repeat indefinitely until this condition returns false. After the first line, where
+                the statement is declared, the following lines that are to be repeated are then written. The last line
+                of this structure is ENDWHILE, which is placed at the end of the code that is to be repeated. If the
+                variable at the top is not updated, then this loop will continue infinitely. The loop will not run the
+                code unless the condition is true (giving this loop the name giving pretest loop).<br>
+                <strong>REPEAT loop</strong><br>
+                The REPEAT loop is the inverse of a WHILE loop, it will run the code, then break if the condition is
+                true. It's also known as a post test loop, as it will test the condition after it has run through the
+                code. The first line of the REPEAT loop is REPEAT, then the repeated code is on the following lines. The
+                last line will read UNTIL <em>value operator value</em>, where the operators are the same set, and the
+                value is either a string, integer or variable.<br>
+                <strong>FOR loop</strong><br>
+                A FOR loop will repeat a segment of code for a specified amount of time. The first line is written FOR
+                <em>variable</em> = <em>value</em> TO <em>value</em> STEP <em>value</em>. All values must be integers.
+                The loop will count up or down from the first value, until it reaches the second value, increasing or
+                decreasing by the step value. The variable only exists inside this loop, and can be anywhere inside the
+                loop. The last line of the must read NEXT <em>variable</em> with the same variable that was defined at
+                the start.
+            </p>
+            <h4>Common Errors</h4>
+            <p>
+                <strong>Invalid syntax - Missing BEGIN or END statement</strong><br>
+                If the BEGIN and END are both in the code, then there could be an extra line after the END. Delete all
+                the
+                blank lines until the END is the last line.<br>
+                <strong>Type Error - Invalid Data Type manipulation</strong> <br>
+                Normally occurs in output or variable manipulation lines. This error occurs if the comparison is wrong,
+                like multiplying a string by a string, or subtracting strings, or performing a comparison that isn't
+                supported.<br>
+                <strong>Math Error - Can't divide by 0</strong><br>
+                Something is being divided by 0. If the 0 can't be seen, then it might be a variable that is secretly
+                updated in a FOR loop, or from an input.<br>
+                <strong>Unknown Value - Did Not enter a known value for an Int, String or Variable</strong><br>
+                The value that was entered was not a valid integer, or string or variable. Ensure that all strings are
+                surrounded by quotation marks (either both single or double), integers are whole numbers, positive or
+                negative, and that the variable is mentioned somewhere else (through input or declaration).<br>
+                <strong>Unknown Operator - Operator enter was not a known value</strong><br>
+                The Operator that was entered was not a valid operator. The only valid operators are equals (==) and not
+                equals (!=) for strings and equals (==) no equals (!=) greater than (>) greater than and equal (>=) less
+                than (&lt;) and less than and equal (&lt;=). <br>
+                <strong>Syntax Error - Missing Keywords</strong> <br>
+                Missing a keyword in a structure. This could be THEN, in a IF statement, or Missing cases in CASEWHERE
+                (where every line inside should have a different case indicate with colons), or Missing a closing
+                statement, like ENDIF, ENDWHILE, REPEAT, NEXT <em>variable</em>, or ENDCASE. This can also occur if the
+                user has created a function inside of another, where both are the same type of function.<br>
+                <strong>Type Error - Invalid comparison statement</strong><br>
+                This occurs when you're comparing 2 things that can't be compared like a string and an integer.<br>
+                <strong>Syntax Error - Unknown Keywords or phrases</strong><br>
+                The word or phrase that was typed in is not a valid keyword or phrase, and can't be understood by the
+                Interpreter. Other options include forgetting a space between words, or having a function inside another
+                function (like a WHILE loop in another WHILE loop).<br>
+                <strong>Other Errors</strong><br>
+                Other key errors that can arise will look like you are getting a blank output, and no actual result.
+                There are 2 possibilities that can occur, either missing a space, or having an infinite loop. If the
+                page is unresponsive, write down your code somewhere, and close the page. If the space is missing, try
+                to find it, and rerun the program.
+            </p>
+            <h4>Download Function</h4>
+            <p>
+                On the home page, there is a download function, on by clicking on the 'Download Code', a pop up will
+                appear which allows you to download the code. There are 3 options. Cancel (which closes the pop up),
+                Download Just Code (downloads all the code and closes pop up), Download Code and Result (downloads both
+                the code and output, and closes pop up). All the downloaded files will be .txt files, labelled with
+                date and downloaded version (starts counting with each new download). You can't download code without
+                having text in the code section, and the code can't be downloaded unless the code hasn't been run.
+            </p>
+            <p>More Information can be found <a
+                    href='https://docs.google.com/document/d/1m5HsZI3jAlDgiGkCdGaZJDYQHoPCQ_o0fia-CHDlrJI/'
+                    target='_blank'>here</a> in the user documentation.
+                <!--A link to the user documentation, in a viewer format-->
+            </p>
+        </div>
+        <footer>&#169; Sam Marinovich 2021</footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+/*
+Made by Sam Marinovich, 2021
+The CSS component of my Pseudocode Interpreter
+*/
+body {
+    background-image: linear-gradient(335deg, #60458c, #45648c, #45528c);
+    background-attachment: fixed;
+    height: 99.9vh;
+}
+
+.container-fluid {
+    margin: 1px 3% 0 3%;
+    width: 94%;
+    background-color: #ffffff;
+    min-height:100%;
+    border-radius: 10px;
+}
+
+.row {
+    padding: 10px;
+    filter: blur(0);
+}
+
+.row > div {
+    padding: 5px;
+    border: 1px;
+    border-style: solid;
+}
+
+.container-fluid.active {
+    /*On screen blur for when the popup appears*/
+    filter: blur(20px);
+}
+
+#downloadMenu {
+    /*The popup menu when it doesn't exist*/
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.30);
+    background: #ffffff;
+}
+
+#downloadMenu.active {
+    /*The CSS for an active popup screen*/
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 1s; 
+    
+}
+
+.alert {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#userCode {
+    width: 100%;
+    border-style: solid;
+    resize: vertical;
+}
+
+.col-8 > button {
+    /*only move the buttons inside the 8-col class*/
+    float: right;
+}

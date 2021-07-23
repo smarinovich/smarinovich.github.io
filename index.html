@@ -1,0 +1,84 @@
+<!--
+    Made by Sam Marinovich 2021,
+    The home/index page of my Pseudocode Interpreter, where the actual interpreter is located
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PseudoCode Interpreter</title>
+    <link rel='icon' type="image/png" href="files/logo.png">
+    <!--Linking all the Bootstrap documents-->
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <script type="text/javascript" src="script/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <!--Linking my own CSS-->
+    <link rel='stylesheet' href="style/style.css">
+</head>
+
+<body>
+
+    <div class='container-fluid'>
+        <br>
+        <div class='jumbotron text-center'>
+            <h1>PseudoCode Interpreter</h1>
+        </div>
+        <div class='row'>
+            <div class='col-4'>
+                <!--Link to help Page-->
+                <h4 class='text-center'>If you have any issues arise, or need help, please visit our help page <a href="help.html">here</a></h4>
+                <br>
+                <hr>
+                <h4>Keywords and Syntax</h4>
+                <!--Guide of keywords and how to write their syntax-->
+                Full Guide & How to use on Help page
+                <p><strong>Note: You can not have a function of the same time inside itself (e.g. a WHILE loop in a WHILE loop)</strong>
+                    <strong>BEGIN</strong> - Start of Algorithm, must always be the first line<br>
+                    <strong>END</strong> - End of Algorithm, must always be the last line<br>
+                    <strong>input</strong> - Allows users to input a value (all values must be a number, or a string in quotation marks)<br>
+                    <strong>output</strong> - Output the value to the users<br>
+                    <strong>IF...THEN</strong> - First line of an if statement, the comparison must be inside the 2 words<br>
+                    <strong>ELSE</strong> - Alternate Option, if IF statement gets a False results<br>
+                    <strong>ENDIF</strong> - Last line of the IF statement, comes after the else section if that exists<br>
+                    <strong>AND</strong> - To compare if A AND B are both true in IF statements<br>
+                    <strong>OR</strong> - To compare if A OR B is true in IF statements<br>
+                    <strong>CASEWHERE</strong> - The first line of multiway selection, followed by the value and comparisons (all cases must be a value, ending with a colon)<br>
+                    <strong>OTHERWISE:</strong> - Default case, which will occur if no case can.<br>
+                    <strong>ENDCASE</strong> - The last line of CASEWHERE.<br>
+                    <strong>WHILE</strong> - First line of a WHILE loop, followed by a comparisons statement<br>
+                    <strong>ENDWHILE</strong> - Last line in a WHILE loop<br>
+                    <strong>REPEAT</strong> - Start of the a REPEAT loop, which is followed by action processes<br>
+                    <strong>UNTIL</strong> - The last line of the REPEAT loop, where the comparison will be<br>
+                    <strong>FOR...=...TO... STEP...</strong> - First line of the FOR loop. first value is the variable, next is the first value, next is the last value, and step is the variable increase<br>
+                    <strong>NEXT...</strong> - The final line of a for loop, must have the same variable as in the first line.<br>
+                    <strong>If there is an error that can't be easily resolved, then check the help page.</strong>
+                </p>
+            </div>
+            <div class='col-8'>
+                <!--The code input text box-->
+                <label for='userCode'>Code Input:</label><br>
+                <textarea id="userCode" name="userCode" rows="8" cols="100" placeholder="Enter your code here..."></textarea><br>
+                <button type="submit" id="runCode">Run</button><br>
+                <hr>
+                <!--The download function, and box where the output code will go-->
+                <button type="button" id='download'>Download Code</button>
+                <strong>Output:</strong>
+                <div id='outputSection'>
+                </div><br>
+            </div>
+        </div>
+    </div>
+   
+    <div id='downloadMenu'>
+        <!--The download Popup, which is hidden until activated-->
+        <h2>Do you want to download?</h2>
+        <p>Either download the Code, or Code with Output</p>
+        <button type="button" id='cancel'>Cancel</button>
+        <button type="button" id='codeDownload'>Download Just Code</button>
+        <button type="button" id='allDownload'>Download Code and Result</button>
+    </div>
+    <script type="text/javascript" src='script/script.js'></script>
+</body>
+
+</html>
