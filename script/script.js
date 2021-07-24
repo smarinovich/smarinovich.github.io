@@ -67,9 +67,9 @@ function arithmeticLogic(outputStatement, outputType, returnedOutput) {
         secondValue = varArray[varReturn(outputStatement[1])].contents;
     } else {
         secondType = varType(outputStatement[1]);
-        if (secondType = 'string') {
+        if (secondType == 'string') {
             secondValue = outputStatement[1].substring(1, outputStatement[1].length - 1);
-        } else if (secondType = 'integer') {
+        } else if (secondType == 'integer') {
             secondValue = parseInt(outputStatement[1]);
         }
     }
@@ -90,6 +90,7 @@ function arithmeticLogic(outputStatement, outputType, returnedOutput) {
         }
     } else if (outputType == 'integer' && arithmeticOPS.includes(outputStatement[0]) == true && secondType == 'integer') {
         // Int manipulation
+        returnedOutput = parseInt(returnedOutput);
         switch (outputStatement[0]) {
             case '+':
                 returnedOutput = returnedOutput + secondValue;
