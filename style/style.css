@@ -63,11 +63,10 @@ body {
 
 #userCode {
     width: 100%;
-    border-style: solid;
     resize: vertical;
 }
 
 .col-8 > button {
-    /*only move the buttons inside the 8-col class*/
+    /*only move the buttons inside the col-8 class*/
     float: right;
 }
