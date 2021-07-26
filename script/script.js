@@ -669,7 +669,7 @@ function runCode(inputCode) {
                 }
                 index = endPos;
                 break;
-            
+
             default:
                 if (inputCode[index][1] == '=') {
                     // Variable Assignment e.g x = 2
@@ -739,23 +739,28 @@ $("#runCode").on("click", function () {
     errorLine = '';
     //User code is saved into a 2D array 
     userCode = $("#userCode").val();
-    userCode = userCode.split('\n');
-    // The code is splitting each line by word spacing, and each individual words
-    userCode = userCode.map((value) => value.split(' '));
-    if (userCode[0][0] == "BEGIN" && userCode[userCode.length - 1][0] == "END") {
-        for (index = 0; index < userCode.length; index++) {
-            for (var varIndex = 0; varIndex < userCode[index].length; varIndex++) {
-                userCode[index][varIndex] = userCode[index][varIndex].replace(/_/g, ' ');
+    if (userCode != '') {
+        userCode = userCode.split('\n');
+        // The code is splitting each line by word spacing, and each individual words
+        userCode = userCode.map((value) => value.split(' '));
+        if (userCode[0][0] == "BEGIN" && userCode[userCode.length - 1][0] == "END") {
+            for (index = 0; index < userCode.length; index++) {
+                for (var varIndex = 0; varIndex < userCode[index].length; varIndex++) {
+                    userCode[index][varIndex] = userCode[index][varIndex].replace(/_/g, ' ');
+                }
             }
+            var inputCode = userCode;
+            // Takes away first and last line of code ('BEGIN' and 'END')
+            inputCode.shift();
+            inputCode.pop();
+            runCode(inputCode);
+        } else {
+            alert("Syntax Error - Missing BEGIN or END statement");
+            allOutput.push("Syntax Error - Missing BEGIN or END statement");
         }
-        var inputCode = userCode;
-        // Takes away first and last line of code ('BEGIN' and 'END')
-        inputCode.shift();
-        inputCode.pop();
-        runCode(inputCode);
     } else {
-        alert("Invalid syntax - Missing BEGIN or END statement");
-        allOutput.push("Invalid syntax - Missing BEGIN or END statement");
+        alert("Runtime Error - The code is missing");
+        allOutput.push("Runtime Error - The code is missing");
     }
     // All the output values that have been saved are being displayed near the bottom of the screen in an output box
     for (var index = 0; index < allOutput.length; index++) {
