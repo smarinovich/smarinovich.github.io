@@ -835,7 +835,7 @@ $("#allDownload").on('click', function () {
     // Downloads both code and output
     // Check if both code and output exist, then format's it into a txt document and downloads
     if (($("#userCode").val() != '') && ($("#outputSection").html() != '')) {
-        var downloadContent = `Created on: ${currentDate.toDateString()}\n\nCODE:\n` + $("#userCode").val() + '\n\nOUTPUT:\n' + $("#outputSection").html();
+        var downloadContent = `Created on: ${currentDate.toDateString()}\nCODE:\n` + $("#userCode").val() + '\nOUTPUT:\n' + $("#outputSection").html();
         // Removes all the <br> tags and replaces it with \n for newline
         downloadContent = downloadContent.replace(/<br>/g, '\n');
         download(`${currentDate.toISOString().slice(0, 10)}PseudoCode_Ver${versionCounter}.txt`, downloadContent);
