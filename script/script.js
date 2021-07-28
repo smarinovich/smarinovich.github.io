@@ -56,30 +56,52 @@ function varType(varContent) {
     }
 }
 
+function valueID(queryValue) {
+    // Will turn the value into its true form (string numbers to numbers, strings with 'a' to a, replace vars with values)
+    var possibleError = false;
+    var currentValue;
+    var currentValueType;
+    if ((queryValue[0] == "'" && queryValue[queryValue.length - 1] == "'") || (queryValue[0] == '"' && queryValue[queryValue.length - 1] == '"')) {
+        currentValue = queryValue.substring(1, queryValue.length - 1);
+        currentValueType = 'string';
+    } else if (varType(queryValue) == 'integer') {
+        currentValue = parseInt(queryValue);
+        currentValueType = 'integer';
+    } else if (varReturn(queryValue) != -1) {
+        currentValue = varArray[varReturn(queryValue)].contents;
+        currentValueType = varArray[varReturn(queryValue)].type;
+    } else {
+        possibleError = true;
+    }
+    // On the return of this function, the code receives an array with a result or error, which must have a set interface after calling this function
+    if (possibleError == true) {
+        return ['Error', 3];
+    } else {
+        return [currentValue, currentValueType]
+    }
+
+}
+
 function arithmeticLogic(outputStatement, outputType, returnedOutput) {
     // Will preform arithmetic functions, like adding, minus, times, division or raising to a power (returnedOutput being the result)
     // Does different things, depending on the 2 data types (integers can have all functions on them, while strings can only times or add)
     var arithmeticOPS = ['+', '-', '*', '\\', '^'];
     var secondType = '';
     var secondValue;
-    if (varReturn(outputStatement[1]) > -1) {
-        secondType = varArray[varReturn(outputStatement[1])].type;
-        secondValue = varArray[varReturn(outputStatement[1])].contents;
+    // Assignment of the second value, where it is looking to see if it is a variable value, or else.
+    var returnArray;
+    returnArray = valueID(outputStatement[1]);
+    if (returnArray[0] == 'Error') {
+        errorNum = returnArray[1];
+        outputType = '';
     } else {
-        secondType = varType(outputStatement[1]);
-        if (secondType == 'string') {
-            secondValue = outputStatement[1].substring(1, outputStatement[1].length - 1);
-        } else if (secondType == 'integer') {
-            secondValue = parseInt(outputStatement[1]);
-        }
+        secondValue = returnArray[0];
+        secondType = returnArray[1];
     }
     if (outputType == 'string' && (outputStatement[0] == '+' || outputStatement[0] == '*')) {
+        // Manipulation of a String
         if (outputStatement[0] == '+') {
-            if (secondType == 'string') {
-                returnedOutput = returnedOutput + secondValue;
-            } else if (secondType == 'integer') {
-                returnedOutput = returnedOutput + secondValue;
-            }
+            returnedOutput = returnedOutput + secondValue;
         } else if (outputStatement[0] == '*') {
             if (secondType == 'integer') {
                 returnedOutput = returnedOutput.repeat(parseInt(secondValue));
@@ -89,7 +111,7 @@ function arithmeticLogic(outputStatement, outputType, returnedOutput) {
             }
         }
     } else if (outputType == 'integer' && arithmeticOPS.includes(outputStatement[0]) == true && secondType == 'integer') {
-        // Int manipulation
+        // Integer manipulation
         returnedOutput = parseInt(returnedOutput);
         switch (outputStatement[0]) {
             case '+':
@@ -121,36 +143,14 @@ function arithmeticLogic(outputStatement, outputType, returnedOutput) {
             returnedOutput = secondValue.repeat(parseInt(returnedOutput));
         }
     } else {
-        errorNum = 1;
+        // If the error is raised earlier, due to the value being unknown, then it won't assign a comparison error
+        if (errorNum != 3) {
+            errorNum = 1;
+        }
     }
     return returnedOutput;
 }
 
-function valueID(queryValue) {
-    // Will turn the value into its true form (string numbers to numbers, strings with 'a' to a, replace vars with values)
-    var possibleError = false;
-    var currentValue;
-    var currentValueType;
-    if ((queryValue[0] == "'" && queryValue[queryValue.length - 1] == "'") || (queryValue[0] == '"' && queryValue[queryValue.length - 1] == '"')) {
-        currentValue = queryValue.substring(1, queryValue.length - 1);
-        currentValueType = 'string';
-    } else if (varType(queryValue) == 'integer') {
-        currentValue = Number(queryValue);
-        currentValueType = 'integer';
-    } else if (varReturn(queryValue) != -1) {
-        currentValue = varArray[varReturn(queryValue)].contents;
-        currentValueType = varArray[varReturn(queryValue)].type;
-    } else {
-        possibleError = true;
-    }
-    // On the return of this function, the code receives an array with a result or error, which must have a set interface after calling this function
-    if (possibleError == true) {
-        return ['Error', 3];
-    } else {
-        return [currentValue, currentValueType]
-    }
-
-}
 
 function booleanComparison(factor1, operator, factor2) {
     // Will compare 2 values, according to the operator. Acts usually as a statement in IF, or WHILE, or similar
@@ -334,7 +334,6 @@ function runCode(inputCode) {
                 if (returnArray[0] == 'Error') {
                     errorNum = returnArray[1];
                     errorLine = inputCode[index];
-                    break;
                 } else {
                     outputTotal = returnArray[0];
                     outputType = returnArray[1];
@@ -549,25 +548,49 @@ function runCode(inputCode) {
                     if (inputCode[index][2] == '=' && inputCode[index][4] == 'TO' && inputCode[index][6] == 'STEP' && inputCode[index][1] == inputCode[nextPos][1]) {
                         // Checks if the 3rd value is =, 5th value is to, 7th value is step, and the declared variable is the same
                         // Check if the variable range is correct
-                        var stepIncrease = parseInt(inputCode[index][7]);
-                        var endValue = parseInt(inputCode[index][5]);
-                        var increaseValue = inputCode[index][1];
-                        // adds the increase value as a variable
-                        var tempRecord = {
-                            name: increaseValue,
-                            contents: parseInt(inputCode[index][3]),
-                            type: 'integer'
+                        var stepIncrease, endValue;
+                        var increaseValue = '';
+                        var returnArray;
+                        returnArray = valueID(inputCode[index][7]);
+                        if (returnArray[0] == 'Error' || returnArray[1] != 'integer') {
+                            errorNum = returnArray[1];
+                            errorLine = inputCode[index];
+                        } else {
+                            stepIncrease = parseInt(returnArray[0]);
                         }
+                        returnArray = valueID(inputCode[index][5]);
+                        if (returnArray[0] == 'Error' || returnArray[1] != 'integer') {
+                            errorNum = returnArray[1];
+                            errorLine = inputCode[index];
+                        } else {
+                            endValue = parseInt(returnArray[0]);
+                        }
+                        returnArray = valueID(inputCode[index][3]);
+                        if (returnArray[0] == 'Error' || returnArray[1] != 'integer') {
+                            errorNum = returnArray[1];
+                            errorLine = inputCode[index];
+                        } else {
+                            increaseValue = parseInt(returnArray[0]);
+                        }
+                        // adds the increase value as a variable
+                        if (increaseValue != '') {
+                            var tempRecord = {
+                                name: inputCode[index][1],
+                                contents: increaseValue,
+                                type: 'integer'
+                            }
+                            varArray.push(tempRecord);
+                        }
+                        increaseValue = inputCode[index][1];
                         var comparison = false;
                         var compMethod = '';
-                        varArray.push(tempRecord);
                         // identify what the change is, and what the boolean comparison should be
-                        if (stepIncrease > 0) {
+                        if (stepIncrease > 0 && errorNum == 0) {
                             if (endValue > varArray[varReturn(increaseValue)].contents) {
                                 comparison = true;
                                 compMethod = '<=';
                             }
-                        } else if (stepIncrease < 0) {
+                        } else if (stepIncrease < 0 && errorNum == 0) {
                             if (endValue < varArray[varReturn(increaseValue)].contents) {
                                 comparison = true;
                                 compMethod = '>=';
@@ -583,11 +606,11 @@ function runCode(inputCode) {
                                 // Manually go in and increase the variable result
                                 varArray[varReturn(increaseValue)].contents = varArray[varReturn(increaseValue)].contents + stepIncrease;
                             }
+                            varArray.splice(varReturn(increaseValue), 1);
                         } else {
                             errorNum = 6;
                             errorLine = inputCode[index];
                         }
-                        varArray.splice(varReturn(increaseValue), 1);
                     } else {
                         // Missing keywords
                         errorNum = 5;
