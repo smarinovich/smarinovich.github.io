@@ -638,8 +638,9 @@ function runCode(inputCode) {
                 if (endPos > index) {
                     var defaultCase = false;
                     var caseCount = 0;
-                    for (varIndex = index; varIndex < endPos - 1; varIndex++) {
+                    for (varIndex = 1; varIndex + index < endPos; varIndex++) {
                         // Looking for amount of cases in the CASEWHERE, and if an other case exists
+                        // varIndex is used to cycle through all the lines in the CASEWHERE
                         if (inputCode[index + varIndex][0] == 'OTHERWISE:') {
                             defaultCase = true;
                         } else if (inputCode[index + varIndex][0][inputCode[index + varIndex][0].length - 1] == ':') {
@@ -810,8 +811,10 @@ function createAlert(type, stage) {
     var element = document.createElement('div');
     element.setAttribute('class', `alert alert-${type} alert-dismissible`);
     if (type == 'warning') {
+        // Alert's the user that they are missing either the code or to the output (output is created by running the code at least once)
         var alertHTML = `<button type="button" class="close" data-dismiss="alert">&times;</button> <strong>Warning!</strong> You can't proceed with this function, as you are missing the ${stage} `;
     } else {
+        // Success alert will alert user if they successfully downloaded the code
         if (stage == 'output') {
             stage = ' and Output';
         } else {
