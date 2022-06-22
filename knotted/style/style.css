@@ -1,0 +1,154 @@
+body {
+    background-image: linear-gradient(335deg, #377bbf, #45648c, #a237bf);
+    background-attachment: fixed;
+    height: 84.5vh;
+    min-height:100%;
+    margin: 0 1.5%;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.container {
+    margin: 0 1.5%;
+    width: 96%;
+    background-color: #ffffff;
+    min-height: 100%;
+    border-radius: 0  0 10px 10px;
+}
+
+nav > div {
+    display: inline-block;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.titleText {
+    color: #fff;
+    text-decoration: inherit
+}
+
+.titleText:hover{
+    color:#fff;
+}
+
+.navIcons {
+    width:100%;
+    height:50%;
+    background-color: #E8DCCA;
+    display: flex;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+}
+
+.titleCards {
+    margin: 0 5%;
+    text-align: center;
+}
+
+.pIcon {
+    color: #000;
+    text-decoration: inherit;
+}
+
+.pIcon:hover {
+    color: #3d3d3d;
+    text-decoration: inherit;
+}
+
+.titleImg {
+    width: 100%;
+    height: 33vh;
+}
+
+.navButtonPar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    border: inset;
+    background-color: #E8DCCA;
+}
+
+.navButton {
+    justify-content: center;
+    text-decoration: inherit;
+    color: #000;
+}
+
+.navButton:hover {
+    color: #3d3d3d;
+}
+
+#title {
+    text-decoration: underline;
+}
+
+#quiz {
+    text-indent: 10px;
+    display:none;
+}
+
+.button {
+    border:4px solid;
+    border-radius:5px;
+    /*width: 40px;*/
+    padding-left:5px;
+    padding-right: 5px;
+    position: relative;
+    float:right;
+    background-color: #DCDCDC;
+    color: black;
+    margin: 0 2px 0 2px;
+}
+
+.button.active {
+    background-color: #F8F8FF;
+    color: #525252;
+}
+
+button {
+    position: relative;
+    float:right;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+#container {
+    width:50%;
+    margin:auto;
+    padding: 0 25px 40px 10px;
+    background-color: #E8DCCA;
+    border:4px solid #8d8578;
+    border-radius:5px;
+    color: #000000;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px #888;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#prev {
+    display:none;
+}
+
+#start {
+    display:none;
+}
+
+audio {
+    display: none;
+}
