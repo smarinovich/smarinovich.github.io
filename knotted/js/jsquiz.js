@@ -37,11 +37,11 @@
         choices: ['Alpine Butterfly', 'Sheepshank', 'Clove Hitch'],
         correctAnswer: 2
       }, {
-        question: "Which knot strnegthen the ropes?",
+        question: "Which knot strengthen the ropes?",
         choices: ['Reef Knot', 'Sheepshank', 'Alpine Butterfly'],
         correctAnswer: 1
       }, {
-        question: "What knot can be used to make a loop around someone's wasit",
+        question: "What knot can be used to make a loop around someone's waist",
         choices: ['Rolling Hitch', 'Bowline', 'Sheepshank'],
         correctAnswer: 1
       },{
