@@ -111,3 +111,15 @@ html {
     background-color: #1abc9c;
     cursor: pointer;
 }
+
+#project-div {
+    background-image: url("../src/background2.jpg");
+    /* background-color: #1abc9c; */
+    /* Green */
+    color: #fff;
+    background-position: center;
+    /* Center the image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
