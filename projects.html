@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SMarinovich</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Samuel Marinovich">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <!-- #TODO FAVICON-->
+</head>
+
+<body>
+
+    <div class="content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">SMarinovich</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html#me">ABOUT</a></li>
+                        <li class="active"><a href="projects.html">PROJECTS</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="jumbotron" id="project-header">
+            <div class="container text-center">
+                <h2>My Current Project..</h2>
+                <p>This website. It's a way to document my other projects, and express myself.</p>
+                <p>For more info, see my <a href="https://github.com/smarinovich/smarinovich.github.io">github</a>.</p>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-3 text-center">
+            <h3>My Previous Projects</h3><br>
+            <!--4 per row-->
+            <div class="row">
+                <div class="col-sm-3 project" id="2">
+                    <p>ChatRoom</p>
+                    <img src="proj/p2.png" class="img-fluid" style="width:100%" alt="Image">
+                </div>
+                <div class="col-sm-3 project" id="1">
+                    <p>Knotted</p>
+                    <img src="proj/p1.png" class="img-fluid" style="width:100%" alt="Image">
+                </div>
+                <div class="col-sm-3 project" id="0">
+                    <p>Psuedocode Interpreter</p>
+                    <img src="proj/p0.png" class="img-fluid" style="width:100%" alt="Image">
+                </div>
+            </div>
+
+        </div><br><br>
+    </div>
+
+    <div id='projectMenu'>
+        <button type="button" id='close'>Close</button>
+        <!--The project info Popup, which is hidden until activated-->
+        <h2 id="title">Blank</h2>
+        <p id="content">Blank</p>
+        <p><a id="github" href="#"></a><br>
+            <a id="link" href="#"></a>
+        </p>
+    </div>
+
+    <footer class="container-fluid bg-4 text-center">
+        <p>Photo Credits:<br>
+            Nattai River Photo: Sam Marinovich 2023<br>
+            Profile Picture: Sam Marinovich 2022<br>
+            Phone Glyphicon: <a href="https://glyphicons.com/" target="_blank">Bootstrap Glyphicons</a>
+        </p>
+    </footer>
+
+    <script type="text/javascript" src="proj/info.js"></script>
+    <script type="text/javascript" src='script/projects.js'></script>
+</body>
+
+</html>
