@@ -7,6 +7,9 @@ const addProjectInfo = (id) => {
     if (data[index].link != "null") {
         $('#link').text("Project Link");
         $('#link').attr("href", data[index].link);
+    } else {
+        $('#link').text("");
+        $('#link').attr("href", "#");
     }
 };
 
