@@ -103,7 +103,7 @@ html {
     top: 50%;
     visibility: visible;
     opacity: 1;
-    transition: 1s;
+    transition: 0.3s;
 
 }
 
@@ -115,7 +115,31 @@ html {
 #project-div {
     background-image: url("../src/background2.jpg");
     /* background-color: #1abc9c; */
-    /* Green */
+    color: #fff;
+    background-position: center;
+    /* Center the image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+#contact {
+    padding: 5px;
+    color: #000;
+    background-color: #fff;
+    margin: auto;
+    width: 50%;
+}
+
+.contact-body {
+    background-image: url("../src/background3.jpg");
     color: #fff;
     background-position: center;
     /* Center the image */
